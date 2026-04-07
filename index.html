@@ -1,248 +1,865 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Car Wash</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>C-Wash | Premium Car Wash & Detailing</title>
+<meta name="description" content="Premium local car wash and detailing with fast service, trusted results, and easy contact via call or WhatsApp." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  :root{
+    --bg:#060816;
+    --panel:rgba(10,14,30,.62);
+    --panel-2:rgba(255,255,255,.06);
+    --text:#f3f7ff;
+    --muted:rgba(243,247,255,.72);
+    --line:rgba(255,255,255,.12);
+    --accent:#5eead4;
+    --accent2:#8b5cf6;
+    --accent3:#22d3ee;
+    --shadow:0 20px 60px rgba(0,0,0,.35);
+    --radius:24px;
+  }
 
-body {
-  font-family: 'Inter', sans-serif;
-  color: white;
-  background: #0f172a;
-  overflow-x: hidden;
-}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at 15% 20%, rgba(94,234,212,.24), transparent 28%),
+      radial-gradient(circle at 85% 15%, rgba(139,92,246,.20), transparent 24%),
+      radial-gradient(circle at 70% 80%, rgba(34,211,238,.18), transparent 26%),
+      linear-gradient(135deg, #050816 0%, #090d1f 42%, #0b1026 100%);
+    overflow-x:hidden;
+  }
 
-/* 🌈 Gradient Background */
-body::before {
-  content: "";
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 20% 30%, #22c55e, transparent),
-              radial-gradient(circle at 80% 70%, #0ea5e9, transparent),
-              radial-gradient(circle at 50% 50%, #9333ea, transparent);
-  filter: blur(120px);
-  animation: move 10s infinite alternate;
-  z-index: -1;
-}
+  body::before{
+    content:"";
+    position:fixed;
+    inset:-40%;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(94,234,212,.16), transparent 25%),
+      radial-gradient(circle at 70% 25%, rgba(139,92,246,.14), transparent 22%),
+      radial-gradient(circle at 55% 75%, rgba(34,211,238,.12), transparent 24%);
+    filter: blur(60px);
+    animation: drift 14s ease-in-out infinite alternate;
+    z-index:-2;
+  }
 
-@keyframes move {
-  0% { transform: translate(0,0); }
-  100% { transform: translate(-60px,-60px); }
-}
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(circle at center, black 34%, transparent 85%);
+    opacity:.25;
+    z-index:-1;
+  }
 
-/* NAVBAR */
-header {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 30px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(12px);
-}
+  @keyframes drift{
+    from{transform:translate3d(-2%, -1%, 0) scale(1)}
+    to{transform:translate3d(3%, 2%, 0) scale(1.06)}
+  }
 
-header h2 {
-  font-family: 'Poppins';
-}
+  .wrap{width:min(1180px, calc(100% - 32px)); margin:0 auto}
 
-header a {
-  background: #22c55e;
-  padding: 8px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: white;
-}
+  .nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(18px);
+    background: rgba(5,8,22,.58);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:14px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text);
+    min-width:max-content;
+  }
+  .brand-mark{
+    width:42px; height:42px; border-radius:14px;
+    background: linear-gradient(135deg, rgba(94,234,212,.95), rgba(139,92,246,.95));
+    box-shadow: 0 12px 30px rgba(94,234,212,.18);
+    display:grid; place-items:center;
+    font-weight:800; color:#051018;
+  }
+  .brand strong{
+    font-family:Poppins,sans-serif;
+    font-size:1rem;
+    letter-spacing:.2px;
+    display:block;
+    line-height:1.05;
+  }
+  .brand span{
+    display:block; font-size:.82rem; color:var(--muted); margin-top:2px;
+  }
 
-/* HERO */
-.hero {
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2') center/cover;
-  position: relative;
-}
+  .nav-links{
+    display:flex; align-items:center; gap:18px;
+  }
+  .nav-links a{
+    color:var(--muted); text-decoration:none; font-size:.95rem; font-weight:600;
+    transition:.25s ease;
+  }
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{
+    display:flex; align-items:center; gap:10px;
+  }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-}
+  .btn{
+    border:0;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:14px 18px;
+    border-radius:999px;
+    font-weight:800;
+    letter-spacing:.2px;
+    transition:.25s ease;
+    transform: translateY(0);
+    will-change: transform;
+    position:relative;
+    overflow:hidden;
+    user-select:none;
+  }
+  .btn::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.22) 50%, transparent 80%);
+    transform: translateX(-120%);
+    transition: transform .7s ease;
+  }
+  .btn:hover::after{transform: translateX(120%)}
+  .btn:hover{transform: translateY(-2px); box-shadow: var(--shadow)}
+  .btn-primary{
+    color:#04101a;
+    background: linear-gradient(135deg, var(--accent), #a7f3d0);
+  }
+  .btn-secondary{
+    color:var(--text);
+    background: rgba(255,255,255,.08);
+    border:1px solid var(--line);
+    backdrop-filter: blur(12px);
+  }
+  .btn-mini{
+    padding:10px 14px;
+    font-size:.92rem;
+  }
 
-.hero-content {
-  position: relative;
-}
+  .hero{
+    position:relative;
+    padding:56px 0 26px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.08fr .92fr;
+    gap:26px;
+    align-items:center;
+    min-height: calc(100vh - 96px);
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.05);
+    color:var(--muted);
+    font-weight:700;
+    margin-bottom:18px;
+    backdrop-filter: blur(10px);
+  }
+  .eyebrow i{
+    width:10px; height:10px; border-radius:99px; background: #5eead4; box-shadow:0 0 0 6px rgba(94,234,212,.14);
+  }
+  .hero h1{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5.4rem);
+    line-height: .95;
+    letter-spacing:-.04em;
+  }
+  .hero h1 span{
+    background: linear-gradient(90deg, #fff, #c7d2fe 45%, #67e8f9 85%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p{
+    margin:18px 0 26px;
+    max-width:62ch;
+    color:var(--muted);
+    font-size:1.05rem;
+    line-height:1.7;
+  }
+  .hero-actions{
+    display:flex; gap:12px; flex-wrap:wrap;
+    margin-bottom:22px;
+  }
 
-.hero h1 {
-  font-family: 'Poppins';
-  font-size: 40px;
-  margin-bottom: 10px;
-}
+  .trust-row{
+    display:flex; gap:10px; flex-wrap:wrap;
+    margin-top:18px;
+  }
+  .trust-pill{
+    padding:10px 13px;
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.05);
+    border-radius:999px;
+    color:var(--muted);
+    font-size:.92rem;
+    backdrop-filter: blur(10px);
+  }
 
-.hero p {
-  margin-bottom: 20px;
-  opacity: 0.9;
-}
+  .hero-card{
+    position:relative;
+    min-height: 640px;
+    border-radius: 30px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    background:
+      linear-gradient(180deg, rgba(8,12,25,.10), rgba(8,12,25,.65)),
+      url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1400&q=80') center/cover;
+    box-shadow: var(--shadow);
+    transform: translateZ(0);
+  }
+  .hero-card::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(94,234,212,.20), transparent 18%),
+      radial-gradient(circle at 80% 30%, rgba(139,92,246,.18), transparent 20%),
+      linear-gradient(180deg, rgba(6,8,22,.12), rgba(6,8,22,.66));
+  }
+  .hero-card-inner{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:22px;
+  }
+  .glass{
+    background: rgba(7,10,22,.42);
+    border:1px solid rgba(255,255,255,.14);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 50px rgba(0,0,0,.22);
+  }
+  .top-badge{
+    width:max-content;
+    padding:10px 14px;
+    border-radius:999px;
+    color:#f8fafc;
+    font-weight:700;
+  }
+  .stats{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:12px;
+  }
+  .stat{
+    padding:16px;
+    border-radius:18px;
+    text-align:left;
+  }
+  .stat strong{
+    display:block;
+    font-size:1.35rem;
+    font-family:Poppins,sans-serif;
+  }
+  .stat span{
+    display:block;
+    color:var(--muted);
+    font-size:.88rem;
+    margin-top:6px;
+    line-height:1.35;
+  }
 
-.btn {
-  padding: 12px 20px;
-  margin: 5px;
-  border-radius: 8px;
-  text-decoration: none;
-  background: linear-gradient(45deg,#22c55e,#0ea5e9);
-  color: white;
-  transition: 0.3s;
-}
+  .content{
+    padding:28px 0 40px;
+  }
+  .section{
+    margin-top:34px;
+    padding:22px;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.04);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow);
+  }
+  .section-title{
+    display:flex; justify-content:space-between; align-items:end; gap:12px; flex-wrap:wrap;
+    margin-bottom:18px;
+  }
+  .section-title h2{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    font-size:clamp(1.5rem, 3vw, 2.3rem);
+    letter-spacing:-.03em;
+  }
+  .section-title p{margin:0; color:var(--muted); max-width:60ch; line-height:1.7}
 
-.btn:hover {
-  transform: scale(1.07);
-}
+  .grid{
+    display:grid;
+    gap:16px;
+  }
+  .grid.services{grid-template-columns: repeat(4, 1fr)}
+  .grid.gallery{grid-template-columns: repeat(12, 1fr)}
+  .grid.testimonials{grid-template-columns: repeat(3, 1fr)}
 
-/* SECTIONS */
-.container {
-  padding: 40px 20px;
-}
+  .card{
+    position:relative;
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.12);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    overflow:hidden;
+    transition: .28s ease;
+  }
+  .card:hover{
+    transform: translateY(-6px);
+    border-color: rgba(94,234,212,.25);
+    box-shadow: 0 24px 65px rgba(0,0,0,.38);
+  }
+  .card .pad{padding:18px}
+  .service-icon{
+    width:52px; height:52px; border-radius:16px;
+    display:grid; place-items:center;
+    margin-bottom:14px;
+    background: linear-gradient(135deg, rgba(94,234,212,.2), rgba(139,92,246,.18));
+    border:1px solid rgba(255,255,255,.12);
+    font-size:1.35rem;
+  }
+  .card h3{
+    margin:0 0 8px;
+    font-family:Poppins,sans-serif;
+    font-size:1.08rem;
+  }
+  .card p{margin:0; color:var(--muted); line-height:1.65}
 
-.section {
-  margin: 60px 0;
-}
+  .badge-row{
+    display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;
+  }
+  .badge{
+    padding:8px 10px;
+    border-radius:999px;
+    background: rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.08);
+    color:var(--muted);
+    font-size:.85rem;
+    font-weight:700;
+  }
 
-h2 {
-  font-family: 'Poppins';
-  margin-bottom: 20px;
-}
+  .gallery-item{
+    position:relative;
+    min-height:220px;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);
+    background:#0e1226;
+  }
+  .gallery-item img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    transition: transform .5s ease;
+  }
+  .gallery-item:hover img{transform: scale(1.07)}
+  .gallery-item::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,.58));
+  }
+  .gallery-caption{
+    position:absolute;
+    left:14px; right:14px; bottom:14px;
+    z-index:1;
+    display:flex; justify-content:space-between; align-items:end; gap:10px;
+  }
+  .gallery-caption strong{
+    display:block;
+    font-family:Poppins,sans-serif;
+    font-size:1rem;
+  }
+  .gallery-caption span{display:block; color:rgba(255,255,255,.8); font-size:.88rem; margin-top:4px}
 
-/* CARDS */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap: 15px;
-}
+  .tall{grid-column: span 5}
+  .wide{grid-column: span 7}
+  .small{grid-column: span 4}
 
-.card {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-}
+  .quote{
+    padding:18px;
+    min-height: 100%;
+  }
+  .quote .stars{color:#fde68a; letter-spacing:2px; margin-bottom:12px}
+  .quote p{font-size:.98rem}
+  .quote .author{
+    margin-top:14px;
+    display:flex; align-items:center; gap:10px;
+    color:var(--muted);
+    font-weight:700;
+  }
+  .avatar{
+    width:38px; height:38px; border-radius:50%;
+    background: linear-gradient(135deg, rgba(94,234,212,.95), rgba(139,92,246,.95));
+  }
 
-.card:hover {
-  transform: translateY(-5px);
-}
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap:16px;
+  }
+  .feature-list{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:12px;
+  }
+  .feature{
+    padding:16px;
+    border-radius:18px;
+    background: rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+  }
+  .feature strong{display:block; margin-bottom:6px; font-family:Poppins,sans-serif}
+  .feature span{color:var(--muted); line-height:1.6; font-size:.94rem}
 
-/* GALLERY */
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-  height: 150px;
-  object-fit: cover;
-}
+  .contact-grid{
+    display:grid;
+    grid-template-columns: .95fr 1.05fr;
+    gap:16px;
+  }
+  .contact-box{
+    padding:20px;
+  }
+  .contact-lines{
+    display:grid;
+    gap:10px;
+    margin-top:14px;
+    color:var(--muted);
+    line-height:1.7;
+  }
+  .contact-actions{
+    display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;
+  }
+  .map{
+    overflow:hidden;
+    border-radius:22px;
+    min-height:360px;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .map iframe{
+    width:100%;
+    height:100%;
+    min-height:360px;
+    border:0;
+    filter: saturate(1.1) contrast(1.05);
+  }
 
-/* FLOAT BUTTON */
-.wa {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25d366;
-  padding: 15px;
-  border-radius: 50%;
-  text-decoration: none;
-  animation: pulse 2s infinite;
-}
+  .footer{
+    padding:24px 0 32px;
+    color:rgba(243,247,255,.62);
+    text-align:center;
+    font-size:.92rem;
+  }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
-}
+  .floating{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    z-index:60;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .floating a{
+    width:58px; height:58px;
+    border-radius:18px;
+    display:grid; place-items:center;
+    text-decoration:none;
+    color:#fff;
+    box-shadow: var(--shadow);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(14px);
+    transition:.25s ease;
+    font-size:1.15rem;
+  }
+  .floating a:hover{transform: translateY(-3px) scale(1.04)}
+  .float-call{background: linear-gradient(135deg, #22c55e, #16a34a)}
+  .float-wa{background: linear-gradient(135deg, #25d366, #16a34a)}
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(255,255,255,0.05);
-}
+  .reveal{opacity:0; transform: translateY(24px); transition: .65s ease}
+  .reveal.show{opacity:1; transform: translateY(0)}
+
+  @media (max-width: 980px){
+    .hero-grid, .about-grid, .contact-grid{grid-template-columns:1fr}
+    .hero{padding-top:28px}
+    .hero-card{min-height: 540px}
+    .grid.services{grid-template-columns: repeat(2, 1fr)}
+    .grid.testimonials{grid-template-columns: 1fr}
+    .tall,.wide,.small{grid-column: span 12}
+    .feature-list{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
+  @media (max-width: 640px){
+    .wrap{width:min(100% - 20px, 1180px)}
+    .nav-inner{padding:12px 0}
+    .brand span{display:none}
+    .hero h1{font-size:clamp(2.35rem, 11vw, 3.8rem)}
+    .hero-card{min-height: 500px}
+    .hero-card-inner{padding:16px}
+    .stats{grid-template-columns:1fr}
+    .grid.services{grid-template-columns:1fr}
+    .section{padding:16px}
+    .btn{width:100%}
+    .hero-actions{flex-direction:column}
+    .contact-actions{flex-direction:column}
+    .floating a{width:54px;height:54px;border-radius:16px}
+  }
 </style>
 </head>
-
 <body>
 
-<header>
-  <h2>Premium Car Wash</h2>
-  <a href="tel:08XXXXXXXXXX">Call Now</a>
-</header>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <div class="brand-mark">C</div>
+        <div>
+          <strong>C-Wash</strong>
+          <span>Premium Car Wash & Detailing</span>
+        </div>
+      </a>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Make Your Car Look Brand New Again</h1>
-    <p>Fast, professional, and affordable car wash service</p>
-    <a href="tel:08XXXXXXXXXX" class="btn">Call Now</a>
-    <a href="https://wa.me/628XXXXXXXXXX" class="btn">WhatsApp</a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-secondary btn-mini" href="tel:08XXXXXXXXXX">Call Now</a>
+        <a class="btn btn-primary btn-mini" href="https://wa.me/628XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><i></i> Tangerang’s premium local car wash experience</div>
+          <h1>Make your car <span>feel brand new</span> again.</h1>
+          <p>
+            A premium car wash and detailing site designed to turn visitors into customers.
+            Fast service, clean results, and a simple way to call or WhatsApp right away.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:08XXXXXXXXXX">Call Now</a>
+            <a class="btn btn-secondary" href="https://wa.me/628XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp Sekarang</a>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-pill">⚡ Fast service</div>
+            <div class="trust-pill">✨ Premium finish</div>
+            <div class="trust-pill">💬 Easy contact</div>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <div class="hero-card-inner">
+            <div class="top-badge glass">Shine, detail, and trust in one place</div>
+
+            <div class="stats">
+              <div class="stat glass">
+                <strong>4.9★</strong>
+                <span>Customer satisfaction vibe</span>
+              </div>
+              <div class="stat glass">
+                <strong>10–30m</strong>
+                <span>Fast booking contact</span>
+              </div>
+              <div class="stat glass">
+                <strong>24/7</strong>
+                <span>Always visible on mobile</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section reveal">
+      <div class="section-title">
+        <div>
+          <h2>Services that feel premium</h2>
+          <p>Clear offers, clean layout, and cards that look expensive without being cluttered.</p>
+        </div>
+      </div>
+
+      <div class="grid services">
+        <div class="card">
+          <div class="pad">
+            <div class="service-icon">🫧</div>
+            <h3>Basic Wash</h3>
+            <p>Quick exterior cleaning for a fresh look that keeps the car clean and presentable.</p>
+            <div class="badge-row">
+              <span class="badge">Fast</span><span class="badge">Affordable</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <div class="service-icon">✨</div>
+            <h3>Full Detailing</h3>
+            <p>Deep clean for inside and outside with a polished, like-new finish.</p>
+            <div class="badge-row">
+              <span class="badge">Deep clean</span><span class="badge">Premium</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <div class="service-icon">🛡️</div>
+            <h3>Polish & Wax</h3>
+            <p>Restore shine and add paint protection so the car looks sharper for longer.</p>
+            <div class="badge-row">
+              <span class="badge">Shiny</span><span class="badge">Protection</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <div class="service-icon">🧼</div>
+            <h3>Interior Cleaning</h3>
+            <p>Cleaner seats, cleaner cabin, and a much more comfortable driving feel.</p>
+            <div class="badge-row">
+              <span class="badge">Fresh</span><span class="badge">Comfort</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="about-grid">
+        <div class="card">
+          <div class="pad">
+            <h3 style="margin-top:0">Why this design works</h3>
+            <p>
+              It uses strong contrast, premium glass panels, glowing gradients, and clear action buttons.
+              That makes the page feel more like a real brand instead of a basic template.
+            </p>
+            <div class="badge-row">
+              <span class="badge">Premium feel</span>
+              <span class="badge">Trusted look</span>
+              <span class="badge">Mobile first</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <h3 style="margin-top:0">Trust factors</h3>
+            <div class="feature-list">
+              <div class="feature">
+                <strong>Fast response</strong>
+                <span>Big buttons and sticky contact options make it easy to act now.</span>
+              </div>
+              <div class="feature">
+                <strong>Cleaner hierarchy</strong>
+                <span>Headlines, cards, and spacing guide the eye naturally.</span>
+              </div>
+              <div class="feature">
+                <strong>High-end visuals</strong>
+                <span>Glow background, blur, and deep shadows give a luxury look.</span>
+              </div>
+              <div class="feature">
+                <strong>Easy to sell</strong>
+                <span>Looks strong enough to show a business owner with confidence.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section reveal">
+      <div class="section-title">
+        <div>
+          <h2>Gallery with real visual impact</h2>
+          <p>Use your own photos later. For now this layout gives you a polished premium look.</p>
+        </div>
+      </div>
+
+      <div class="grid gallery">
+        <div class="gallery-item wide">
+          <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c7?auto=format&fit=crop&w=1400&q=80" alt="Car detailing" />
+          <div class="gallery-caption">
+            <div>
+              <strong>Exterior detail</strong>
+              <span>Glossy finish and clean bodywork</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item small">
+          <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=900&q=80" alt="Luxury car wash" />
+          <div class="gallery-caption">
+            <div>
+              <strong>Premium wash</strong>
+              <span>Sharp and clean look</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item small">
+          <img src="https://images.unsplash.com/photo-1583267746897-2cf415887172?auto=format&fit=crop&w=900&q=80" alt="Car cleaning tools" />
+          <div class="gallery-caption">
+            <div>
+              <strong>Detailing gear</strong>
+              <span>Professional tools feel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item tall">
+          <img src="https://images.unsplash.com/photo-1597007066704-67bf2068d3b2?auto=format&fit=crop&w=900&q=80" alt="Car interior" />
+          <div class="gallery-caption">
+            <div>
+              <strong>Interior cleaning</strong>
+              <span>Fresh and comfortable cabin</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item wide">
+          <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1400&q=80" alt="Shiny car" />
+          <div class="gallery-caption">
+            <div>
+              <strong>Showroom finish</strong>
+              <span>The kind of result customers notice instantly</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="section reveal">
+      <div class="section-title">
+        <div>
+          <h2>Testimonials that feel believable</h2>
+          <p>Short, natural reviews work better than long fake-sounding text.</p>
+        </div>
+      </div>
+
+      <div class="grid testimonials">
+        <div class="card quote">
+          <div class="pad">
+            <div class="stars">★★★★★</div>
+            <p>“Pelayanan cepat, hasilnya bikin mobil kelihatan jauh lebih bersih.”</p>
+            <div class="author"><div class="avatar"></div>Local customer</div>
+          </div>
+        </div>
+
+        <div class="card quote">
+          <div class="pad">
+            <div class="stars">★★★★★</div>
+            <p>“Tampilannya premium dan enak dibuka dari HP. Terasa lebih profesional.”</p>
+            <div class="author"><div class="avatar"></div>Small business owner</div>
+          </div>
+        </div>
+
+        <div class="card quote">
+          <div class="pad">
+            <div class="stars">★★★★★</div>
+            <p>“Harga terjangkau, hasil rapi, dan gampang banget hubungi lewat WhatsApp.”</p>
+            <div class="author"><div class="avatar"></div>Returning customer</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <div class="section-title">
+        <div>
+          <h2>Contact section built to convert</h2>
+          <p>Direct call, WhatsApp, and map access so people do not need to think too hard.</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card contact-box">
+          <div class="pad">
+            <h3 style="margin-top:0">C-Wash Tangerang</h3>
+            <div class="contact-lines">
+              <div>📞 Phone: <a href="tel:08XXXXXXXXXX" style="color:#fff; font-weight:800; text-decoration:none">08XXXXXXXXXX</a></div>
+              <div>💬 WhatsApp: <a href="https://wa.me/628XXXXXXXXXX" target="_blank" rel="noopener" style="color:#fff; font-weight:800; text-decoration:none">Chat now</a></div>
+              <div>📍 Location: Tangerang, Indonesia</div>
+              <div>⏱️ Fast response and easy booking</div>
+            </div>
+
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="tel:08XXXXXXXXXX">Call Now</a>
+              <a class="btn btn-secondary" href="https://wa.me/628XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp Sekarang</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="map glass">
+          <iframe
+            src="https://www.google.com/maps?q=Tangerang%2C%20Indonesia&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Google Maps">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating">
+    <a class="float-call" href="tel:08XXXXXXXXXX" aria-label="Call now">📞</a>
+    <a class="float-wa" href="https://wa.me/628XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
   </div>
-</section>
 
-<div class="container">
+  <footer class="footer wrap">
+    © 2026 C-Wash. Premium car wash and detailing.
+  </footer>
 
-<section class="section">
-  <h2>Our Services</h2>
-  <div class="grid">
-    <div class="card">Basic Wash</div>
-    <div class="card">Full Detailing</div>
-    <div class="card">Polish & Wax</div>
-    <div class="card">Interior Cleaning</div>
-  </div>
-</section>
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.14 });
 
-<section class="section">
-  <h2>About Us</h2>
-  <div class="card">
-    We provide fast, professional car wash services focused on quality and customer satisfaction.
-  </div>
-</section>
+  reveals.forEach(el => observer.observe(el));
 
-<section class="section">
-  <h2>Testimonials</h2>
-  <div class="card">⭐⭐⭐⭐⭐ “Mobil jadi bersih banget!”</div>
-  <div class="card">⭐⭐⭐⭐⭐ “Cepat dan hasil mantap”</div>
-</section>
-
-<section class="section gallery">
-  <h2>Gallery</h2>
-  <div class="grid">
-    <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c7">
-    <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a">
-    <img src="https://images.unsplash.com/photo-1583267746897-2cf415887172">
-  </div>
-</section>
-
-<section class="section">
-  <h2>Contact</h2>
-  <div class="card">
-    📞 08XXXXXXXXXX <br>
-    📍 Tangerang <br>
-    📲 WhatsApp Available
-  </div>
-</section>
-
-</div>
-
-<a href="https://wa.me/628XXXXXXXXXX" class="wa">💬</a>
-
-<footer>
-  © 2026 Premium Car Wash
-</footer>
-
+  // Gentle button ripple-like pulse on hover focus
+  document.querySelectorAll('.btn, .floating a').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(0.96)' },
+        { transform: 'scale(1)' }
+      ], { duration: 180, easing: 'ease-out' });
+    });
+  });
+</script>
 </body>
-</html>
+  </html> 
