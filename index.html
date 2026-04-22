@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>C-Wash Experience</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -15,63 +15,86 @@ body{
   overflow-x:hidden;
 }
 
-/* FULLSCREEN HERO VIDEO STYLE */
+/* HERO */
 .hero{
   height:100vh;
-  position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  overflow:hidden;
-}
-
-.hero img{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(40%);
+  background:url('https://images.unsplash.com/photo-1502877338535-766e1452684a') center/cover;
 }
 
 .hero h1{
   font-size:80px;
-  z-index:2;
-  mix-blend-mode:screen;
 }
 
-/* FLOAT TEXT SECTION */
-.section{
-  padding:120px 20px;
-  max-width:900px;
-  margin:auto;
-  font-size:22px;
-  line-height:1.6;
-}
-
-/* PARALLAX IMAGE */
-.image-block{
-  height:80vh;
-  background:url('https://images.unsplash.com/photo-1603386329225-868f9b1ee6c7') center/cover;
-  background-attachment:fixed;
-}
-
-/* SPLIT TEXT */
-.split{
+/* HORIZONTAL SCROLL */
+.scroll-container{
   display:flex;
-  padding:80px 20px;
+  height:100vh;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
 }
 
-.split div{
-  flex:1;
-  padding:20px;
+.panel{
+  min-width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  scroll-snap-align:start;
+  position:relative;
 }
 
-.split h2{
-  font-size:50px;
+.panel:nth-child(1){background:#111}
+.panel:nth-child(2){background:#222}
+.panel:nth-child(3){background:#111}
+.panel:nth-child(4){background:#222}
+
+.panel h2{
+  font-size:60px;
 }
 
-/* CHAOTIC BUTTON */
+/* IMAGE PARALLAX */
+.panel img{
+  position:absolute;
+  width:80%;
+  opacity:0.3;
+  transition:0.5s;
+}
+
+.panel:hover img{
+  transform:scale(1.2);
+  opacity:0.5;
+}
+
+/* SLIDER */
+.slider{
+  display:flex;
+  overflow-x:auto;
+  gap:20px;
+  padding:40px;
+}
+
+.slide{
+  min-width:300px;
+  height:400px;
+  background:#111;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  transition:0.3s;
+}
+
+.slide:hover{
+  transform:scale(1.1);
+}
+
+/* FLOAT BUTTON */
 .cta{
   position:fixed;
   bottom:20px;
@@ -80,23 +103,8 @@ body{
   color:black;
   padding:15px 25px;
   border-radius:40px;
+  font-weight:bold;
   cursor:pointer;
-  transition:.3s;
-}
-
-.cta:hover{
-  transform:scale(1.2) rotate(3deg);
-}
-
-/* SCROLL FADE */
-.fade{
-  opacity:0;
-  transform:translateY(50px);
-  transition:1s;
-}
-.show{
-  opacity:1;
-  transform:none;
 }
 </style>
 </head>
@@ -104,47 +112,43 @@ body{
 <body>
 
 <div class="hero">
-  <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
-  <h1>FEEL NEW AGAIN</h1>
+  <h1>FEEL NEW</h1>
 </div>
 
-<div class="section fade">
-  Your car doesn’t need just a wash.  
-  It needs a reset.
-</div>
+<div class="scroll-container">
 
-<div class="image-block"></div>
-
-<div class="split fade">
-  <div>
-    <h2>Not a wash.</h2>
+  <div class="panel">
+    <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c7">
+    <h2>Basic Wash</h2>
   </div>
-  <div>
-    A transformation experience designed to bring back the original feel.
+
+  <div class="panel">
+    <img src="https://images.unsplash.com/photo-1597007066704-67bf2068d3b2">
+    <h2>Full Detail</h2>
   </div>
+
+  <div class="panel">
+    <img src="https://images.unsplash.com/photo-1583267746897-2cf415887172">
+    <h2>Polish & Wax</h2>
+  </div>
+
+  <div class="panel">
+    <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a">
+    <h2>Interior Clean</h2>
+  </div>
+
 </div>
 
-<div class="section fade">
-  Fast. Clean. Done right.  
-  No complicated process. Just results.
+<div class="slider">
+  <div class="slide">Shine</div>
+  <div class="slide">Clean</div>
+  <div class="slide">Detail</div>
+  <div class="slide">Premium</div>
 </div>
 
 <div class="cta">
-  WhatsApp Now
+  WhatsApp
 </div>
-
-<script>
-const faders = document.querySelectorAll('.fade');
-
-window.addEventListener('scroll', ()=>{
-  faders.forEach(el=>{
-    const rect = el.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
-      el.classList.add('show');
-    }
-  });
-});
-</script>
 
 </body>
 </html>
